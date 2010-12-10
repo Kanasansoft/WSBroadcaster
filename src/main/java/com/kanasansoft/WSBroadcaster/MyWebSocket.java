@@ -1,4 +1,4 @@
-package com.kanasansoft.WebSocketBroadcaster;
+package com.kanasansoft.WSBroadcaster;
 
 import java.io.IOException;
 import java.util.Set;

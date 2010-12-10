@@ -1,4 +1,4 @@
-package com.kanasansoft.WebSocketBroadcaster;
+package com.kanasansoft.WSBroadcaster;
 
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
@@ -15,13 +15,13 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
-public class WebSocketBroadcaster {
+public class WSBroadcaster {
 
 	public static void main(String[] args) throws Exception {
-		new WebSocketBroadcaster();
+		new WSBroadcaster();
 	}
 
-	public WebSocketBroadcaster() throws Exception {
+	public WSBroadcaster() throws Exception {
 
 		MenuItem quitMenuItem = new MenuItem("Quit");
 		quitMenuItem.addActionListener(new ActionListener() {
@@ -37,7 +37,7 @@ public class WebSocketBroadcaster {
 		URL imageUrl = this.getClass().getClassLoader().getResource("images/icon.png");
 		TrayIcon trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().createImage(imageUrl));
 		trayIcon.setImageAutoSize(true);
-		trayIcon.setToolTip("WebSocketBroadcaster");
+		trayIcon.setToolTip("WSBroadcaster");
 		trayIcon.setPopupMenu(popupMenu);
 
 		SystemTray systemTray = java.awt.SystemTray.getSystemTray();
