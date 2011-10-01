@@ -6,27 +6,27 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 import org.eclipse.jetty.websocket.WebSocket;
 
-public class MyWebSocket implements WebSocket {
+public class MyWebSocket implements WebSocket.OnTextMessage, WebSocket.OnBinaryMessage {
 
-	private Outbound outbound_;
+	private Connection connection_;
 	private static Set<MyWebSocket> members_ = new CopyOnWriteArraySet<MyWebSocket>();
 
 	@Override
-	public void onConnect(Outbound outbound) {
-		outbound_ = outbound;
+	public void onOpen(Connection connection) {
+		connection_ = connection;
 		members_.add(this);
 	}
 
 	@Override
-	public void onDisconnect() {
+	public void onClose(int closeCode, String message) {
 		members_.remove(this);
 	}
 
 	@Override
-	public void onMessage(byte frame, String data) {
+	public void onMessage(String data) {
 		for(MyWebSocket member : members_) {
 			try {
-				member.outbound_.sendMessage(frame, data);
+				member.connection_.sendMessage(data);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -34,10 +34,10 @@ public class MyWebSocket implements WebSocket {
 	}
 
 	@Override
-	public void onMessage(byte frame, byte[] data, int offset, int length) {
+	public void onMessage(byte[] data, int offset, int length) {
 		for(MyWebSocket member : members_) {
 			try {
-				member.outbound_.sendMessage(frame, data, offset, length);
+				member.connection_.sendMessage(data, offset, length);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -8,8 +8,7 @@ import org.eclipse.jetty.websocket.WebSocketServlet;
 public class MyWebSocketServlet extends WebSocketServlet {
 
 	@Override
-	protected WebSocket doWebSocketConnect(HttpServletRequest request,
-			String protocol) {
+	public WebSocket doWebSocketConnect(HttpServletRequest request, String protocol) {
 		return new MyWebSocket();
 	}
 
