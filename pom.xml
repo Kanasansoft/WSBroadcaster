@@ -3,7 +3,7 @@
   <groupId>com.kanasansoft.WSBroadcaster</groupId>
   <artifactId>WSBroadcaster</artifactId>
   <name>WSBroadcaster</name>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3</version>
   <properties>
     <package.package-name>com.kanasansoft.WSBroadcaster</package.package-name>
     <package.main-class>${package.package-name}.${name}</package.main-class>
